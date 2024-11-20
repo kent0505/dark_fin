@@ -1,40 +1,38 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../models/test_model.dart';
+import '../models/incom.dart';
 import '../utils.dart';
 import 'prefs.dart';
 
-String boxName = 'shablonbox';
-String keyName = 'modelsList';
-List<TestModel> modelsList = [];
+List<Incom> incomsList = [];
 
 Future<void> initDB() async {
   try {
     await Hive.initFlutter();
-    await getData();
-    // await Hive.deleteBoxFromDisk(DB.boxName);
-    Hive.registerAdapter(TestModelAdapter());
+    await getPrefs();
+    // await Hive.deleteBoxFromDisk(DB.'darkfinbox');
+    Hive.registerAdapter(IncomAdapter());
   } catch (e) {
     logger(e);
   }
 }
 
-Future<void> getModels() async {
+Future<void> getIncoms() async {
   try {
-    final box = await Hive.openBox(boxName);
-    List data = box.get(keyName) ?? [];
-    modelsList = data.cast<TestModel>();
-    logger(modelsList.length);
+    final box = await Hive.openBox('darkfinbox');
+    List data = box.get('darkfinincomsList') ?? [];
+    incomsList = data.cast<Incom>();
+    logger(incomsList.length);
   } catch (e) {
     logger(e);
   }
 }
 
-Future<void> updateModels() async {
+Future<void> updateIncoms() async {
   try {
-    final box = await Hive.openBox(boxName);
-    box.put(keyName, modelsList);
-    modelsList = await box.get(keyName);
+    final box = await Hive.openBox('darkfinbox');
+    box.put('darkfinincomsList', incomsList);
+    incomsList = await box.get('darkfinincomsList');
   } catch (e) {
     logger(e);
   }

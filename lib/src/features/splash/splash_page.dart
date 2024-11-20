@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../blocs/test/test_bloc.dart';
+import '../../blocs/incom/incom_bloc.dart';
 import '../../core/db/db.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/others/loading_widget.dart';
@@ -17,7 +17,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   void load() async {
     await initDB().then((value) {
-      if (mounted) context.read<TestBloc>().add(GetTestEvent());
+      if (mounted) context.read<IncomBloc>().add(GetIncomEvent());
 
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {

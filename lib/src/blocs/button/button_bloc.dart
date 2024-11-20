@@ -9,6 +9,7 @@ class ButtonBloc extends Bloc<ButtonEvent, ButtonState> {
     on<ButtonEvent>(
       (event, emit) => switch (event) {
         CheckButtonActive() => _checkButtonActive(event, emit),
+        DisableButton() => _disableButton(event, emit),
       },
     );
   }
@@ -18,6 +19,15 @@ class ButtonBloc extends Bloc<ButtonEvent, ButtonState> {
     Emitter<ButtonState> emit,
   ) {
     final isEmpty = event.controllers.any((controller) => controller.isEmpty);
+    if (state is ButtonInactive && isEmpty ||
+        state is ButtonInitial && !isEmpty) return;
     emit(isEmpty ? ButtonInactive() : ButtonInitial());
+  }
+
+  void _disableButton(
+    DisableButton event,
+    Emitter<ButtonState> emit,
+  ) {
+    emit(ButtonInactive());
   }
 }

@@ -6,7 +6,7 @@ import 'src/core/config/router.dart';
 import 'src/core/config/themes.dart';
 import 'src/blocs/button/button_bloc.dart';
 import 'src/blocs/navbar/navbar_bloc.dart';
-import 'src/blocs/test/test_bloc.dart';
+import 'src/blocs/incom/incom_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ButtonBloc()),
         BlocProvider(create: (context) => NavbarBloc()),
-        BlocProvider(create: (context) => TestBloc()),
+        BlocProvider(create: (context) => IncomBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

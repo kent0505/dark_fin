@@ -8,3 +8,5 @@ class CheckButtonActive extends ButtonEvent {
 
   final List<String> controllers;
 }
+
+class DisableButton extends ButtonEvent {}

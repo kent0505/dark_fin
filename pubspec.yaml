@@ -71,13 +71,21 @@ flutter:
     - assets/
     - assets/fonts/
   fonts:
-    # SFProText
-    - family: SFR
+    - family: SF400
       fonts:
-        - asset: assets/fonts/SFProText-Regular.ttf
-    - family: SFM
+        - asset: assets/fonts/SF-Pro-Display-Regular.ttf
+    - family: SF500
       fonts:
-        - asset: assets/fonts/SFProText-Medium.ttf
-    - family: SFB
+        - asset: assets/fonts/SF-Pro-Display-Medium.ttf
+    - family: SF600
       fonts:
-        - asset: assets/fonts/SFProText-Bold.ttf
+        - asset: assets/fonts/SF-Pro-Display-SemiBold.ttf
+    - family: SF700
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Bold.ttf
+    - family: SF800
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Heavy.ttf
+    - family: SF900
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Black.ttf

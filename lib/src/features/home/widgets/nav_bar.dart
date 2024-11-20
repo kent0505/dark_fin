@@ -14,7 +14,7 @@ class NavBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 70,
+        height: 62,
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(
           color: Color(0xff181818),
@@ -25,22 +25,22 @@ class NavBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _NavBarButton(
-                  id: 1,
+                  index: 1,
                   title: 'Home',
                   active: state is NavbarInitial,
                 ),
                 _NavBarButton(
-                  id: 2,
+                  index: 2,
                   title: 'Income',
                   active: state is NavbarIncome,
                 ),
                 _NavBarButton(
-                  id: 3,
+                  index: 3,
                   title: 'News',
                   active: state is NavbarNews,
                 ),
                 _NavBarButton(
-                  id: 4,
+                  index: 4,
                   title: 'Quiz',
                   active: state is NavbarQuiz,
                 ),
@@ -55,12 +55,12 @@ class NavBar extends StatelessWidget {
 
 class _NavBarButton extends StatelessWidget {
   const _NavBarButton({
-    required this.id,
+    required this.index,
     required this.title,
     required this.active,
   });
 
-  final int id;
+  final int index;
   final String title;
   final bool active;
 
@@ -70,18 +70,20 @@ class _NavBarButton extends StatelessWidget {
       onPressed: active
           ? null
           : () {
-              context.read<NavbarBloc>().add(ChangePageEvent(index: id));
+              context.read<NavbarBloc>().add(ChangeNavbar(index: index));
             },
       padding: 0,
       child: SizedBox(
         width: 62,
         child: Column(
           children: [
-            const SizedBox(height: 14),
+            const SizedBox(height: 10),
             SizedBox(
               height: 25,
               child: SvgWidget(
-                'assets/tab$id.svg',
+                index == 2 && active
+                    ? 'assets/tab5.svg'
+                    : 'assets/tab$index.svg',
                 color: active ? const Color(0xffFEDB35) : Colors.white,
               ),
             ),

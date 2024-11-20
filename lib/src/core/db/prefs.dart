@@ -4,7 +4,7 @@ import '../utils.dart';
 
 bool onboard = true;
 
-Future<void> getData() async {
+Future<void> getPrefs() async {
   try {
     final prefs = await SharedPreferences.getInstance();
     // await prefs.remove('onboard');
