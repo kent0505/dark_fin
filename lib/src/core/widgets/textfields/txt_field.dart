@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../blocs/button/button_bloc.dart';
 import '../../config/fonts.dart';
+import '../buttons/my_button.dart';
+import '../others/svg_widget.dart';
 
 class TxtField extends StatelessWidget {
   const TxtField({
@@ -70,6 +74,36 @@ class TxtField extends StatelessWidget {
             onChanged: (value) {
               onChanged();
             },
+          ),
+          Positioned(
+            top: 18,
+            right: 18,
+            child: BlocBuilder<ButtonBloc, ButtonState>(
+              builder: (context, state) {
+                return MyButton(
+                  onPressed: controller.text.isEmpty
+                      ? null
+                      : () {
+                          controller.clear();
+                          onChanged();
+                        },
+                  minSize: 18,
+                  child: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: controller.text.isEmpty
+                          ? const Color(0xffB8BBBE)
+                          : Colors.black,
+                    ),
+                    child: const Center(
+                      child: SvgWidget('assets/clear.svg'),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

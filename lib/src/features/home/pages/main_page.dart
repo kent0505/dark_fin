@@ -1,3 +1,5 @@
+import 'package:dark_fin/src/core/widgets/others/no_data.dart';
+import 'package:dark_fin/src/features/home/widgets/balance_card.dart';
 import 'package:dark_fin/src/features/home/widgets/income_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,23 +62,34 @@ class MainPageState extends State<MainPage> {
             },
           ),
         ),
-        const SizedBox(height: 8),
-        BlocBuilder<IncomBloc, IncomState>(
-          builder: (context, state) {
-            if (state is IncomLoadedState) {
-              return Expanded(
-                child: ListView.builder(
-                  itemCount: state.incoms.length,
-                  itemBuilder: (context, index) {
-                    return IncomeCard(incom: state.incoms[index]);
-                  },
-                ),
-              );
-            }
+        const SizedBox(height: 20),
+        if (page == 'Balance')
+          const Column(
+            children: [
+              BalanceCard(),
+            ],
+          ),
+        if (page == 'History')
+          Expanded(
+            child: BlocBuilder<IncomBloc, IncomState>(
+              builder: (context, state) {
+                if (state is IncomLoadedState) {
+                  if (state.incoms.isEmpty) {
+                    return const NoData();
+                  }
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: state.incoms.length,
+                    itemBuilder: (context, index) {
+                      return IncomeCard(incom: state.incoms[index]);
+                    },
+                  );
+                }
 
-            return Container();
-          },
-        ),
+                return Container();
+              },
+            ),
+          ),
       ],
     );
   }

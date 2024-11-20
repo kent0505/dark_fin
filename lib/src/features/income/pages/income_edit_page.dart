@@ -198,7 +198,7 @@ class _BackButton extends StatelessWidget {
         style: const TextStyle(
           color: Colors.white,
           fontSize: 17,
-          fontFamily: Fonts.w400,
+          fontFamily: Fonts.w300,
         ),
       ),
     );
