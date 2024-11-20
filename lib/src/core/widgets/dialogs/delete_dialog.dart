@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../config/fonts.dart';
 import '../buttons/my_button.dart';
 
 class DeleteDialog extends StatelessWidget {
@@ -15,7 +16,7 @@ class DeleteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: const Color(0xff343434),
       child: SizedBox(
         height: 150,
         width: 200,
@@ -24,6 +25,11 @@ class DeleteDialog extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: Fonts.w700,
+              ),
             ),
             const Spacer(),
             Row(
@@ -73,6 +79,11 @@ class _Button extends StatelessWidget {
         children: [
           Text(
             title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontFamily: Fonts.w600,
+            ),
           ),
         ],
       ),

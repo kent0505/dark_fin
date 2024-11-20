@@ -71,6 +71,9 @@ flutter:
     - assets/
     - assets/fonts/
   fonts:
+    - family: SF300
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Light.ttf
     - family: SF400
       fonts:
         - asset: assets/fonts/SF-Pro-Display-Regular.ttf

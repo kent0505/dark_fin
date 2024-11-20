@@ -8,19 +8,9 @@ final theme = ThemeData(
   fontFamily: Fonts.w400,
   scaffoldBackgroundColor: Colors.black,
   brightness: Brightness.dark,
-
-  // textSelectionTheme: const TextSelectionThemeData(
-  //   cursorColor: AppColors.main,
-  //   selectionColor: AppColors.main,
-  //   selectionHandleColor: AppColors.main,
-  // ),
-  // colorScheme: ColorScheme.fromSwatch(
-  //   accentColor: AppColors.main, // overscroll indicator color
-  // ),
   dialogTheme: const DialogTheme(
-    // insetPadding: EdgeInsets.symmetric(horizontal: 20),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(24)),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
   ),
 );

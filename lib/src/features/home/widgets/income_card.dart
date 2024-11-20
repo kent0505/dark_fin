@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/config/fonts.dart';
 import '../../../core/models/incom.dart';
+import '../../../core/widgets/buttons/my_button.dart';
 
 class IncomeCard extends StatelessWidget {
   const IncomeCard({
@@ -24,22 +26,60 @@ class IncomeCard extends StatelessWidget {
         color: const Color(0xff343434),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Row(
-        children: [
-          const SizedBox(width: 70),
-          Column(
-            children: [
-              Text(
-                incom.title,
-                style: const TextStyle(
+      child: MyButton(
+        onPressed: () {
+          context.push('/income_edit', extra: incom);
+        },
+        minSize: 42,
+        child: Row(
+          children: [
+            SizedBox(
+              width: 70,
+              child: Container(
+                width: 26,
+                height: 26,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
                   color: Colors.white,
-                  fontSize: 12,
-                  fontFamily: Fonts.w600,
                 ),
               ),
-            ],
-          ),
-        ],
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    incom.title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: Fonts.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  const Text(
+                    'Income',
+                    style: TextStyle(
+                      color: Color(0xff00AE9A),
+                      fontSize: 8,
+                      fontFamily: Fonts.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text(
+              '+ \$${incom.amount}',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontFamily: Fonts.w600,
+              ),
+            ),
+            const SizedBox(width: 20),
+          ],
+        ),
       ),
     );
   }

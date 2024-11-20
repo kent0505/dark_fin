@@ -41,9 +41,11 @@ class _IncomePageState extends State<IncomePage> {
   }
 
   void onCategory(String value) {
-    identical(categoryController.text, value)
-        ? categoryController.clear()
-        : categoryController.text = value;
+    if (categoryController.text == value) {
+      categoryController.clear();
+    } else {
+      categoryController.text = value;
+    }
     checkButton();
   }
 
@@ -54,7 +56,7 @@ class _IncomePageState extends State<IncomePage> {
       title: titleController.text,
       amount: int.parse(amountController.text),
     );
-    context.read<IncomBloc>().add(AddIncomEvent(incom: incom));
+    context.read<IncomBloc>().add(IncomAdd(incom: incom));
     context.read<NavbarBloc>().add(ChangeNavbar(index: 1));
     context.read<ButtonBloc>().add(DisableButton());
   }
