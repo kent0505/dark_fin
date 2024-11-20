@@ -7,10 +7,12 @@ class DeleteDialog extends StatelessWidget {
   const DeleteDialog({
     super.key,
     required this.title,
+    this.onlyClose = false,
     required this.onYes,
   });
 
   final String title;
+  final bool onlyClose;
   final void Function() onYes;
 
   @override
@@ -32,26 +34,32 @@ class DeleteDialog extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Row(
-              children: [
-                const SizedBox(width: 20),
-                _Button(
-                  title: 'NO',
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                const Spacer(),
-                _Button(
-                  title: 'YES',
-                  onPressed: () {
-                    Navigator.pop(context);
-                    onYes();
-                  },
-                ),
-                const SizedBox(width: 20),
-              ],
-            ),
+            if (onlyClose)
+              _Button(
+                title: 'OK',
+                onPressed: onYes,
+              )
+            else
+              Row(
+                children: [
+                  const SizedBox(width: 20),
+                  _Button(
+                    title: 'NO',
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const Spacer(),
+                  _Button(
+                    title: 'YES',
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onYes();
+                    },
+                  ),
+                  const SizedBox(width: 20),
+                ],
+              ),
             const SizedBox(height: 10),
           ],
         ),

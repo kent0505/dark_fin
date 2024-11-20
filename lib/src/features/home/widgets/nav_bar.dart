@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/config/fonts.dart';
+import '../../../core/utils.dart';
 import '../../../core/widgets/others/svg_widget.dart';
 import '../../../core/widgets/buttons/my_button.dart';
 import '../../../blocs/navbar/navbar_bloc.dart';
@@ -14,7 +15,7 @@ class NavBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
-        height: 62,
+        height: 62 + getBottom(context),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(
           color: Color(0xff181818),
@@ -77,7 +78,7 @@ class _NavBarButton extends StatelessWidget {
         width: 62,
         child: Column(
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 14),
             SizedBox(
               height: 25,
               child: SvgWidget(

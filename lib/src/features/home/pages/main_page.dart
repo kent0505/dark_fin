@@ -1,6 +1,3 @@
-import 'package:dark_fin/src/core/widgets/others/no_data.dart';
-import 'package:dark_fin/src/features/home/widgets/balance_card.dart';
-import 'package:dark_fin/src/features/home/widgets/income_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +5,10 @@ import '../../../blocs/button/button_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/tab_button.dart';
+import '../../../core/widgets/others/no_data.dart';
 import '../../../core/widgets/texts/page_title.dart';
+import '../widgets/balance_card.dart';
+import '../widgets/income_card.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -68,8 +68,8 @@ class MainPageState extends State<MainPage> {
             children: [
               BalanceCard(),
             ],
-          ),
-        if (page == 'History')
+          )
+        else if (page == 'History')
           Expanded(
             child: BlocBuilder<IncomBloc, IncomState>(
               builder: (context, state) {
@@ -77,6 +77,7 @@ class MainPageState extends State<MainPage> {
                   if (state.incoms.isEmpty) {
                     return const NoData();
                   }
+
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: state.incoms.length,
@@ -89,7 +90,9 @@ class MainPageState extends State<MainPage> {
                 return Container();
               },
             ),
-          ),
+          )
+        else
+          const Text('Exchange'),
       ],
     );
   }
