@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'my_fonts.dart';
 
-final theme = ThemeData.dark(
+final darkTheme = ThemeData.dark(
   useMaterial3: false,
 ).copyWith(
-  // fontFamily: Fonts.w400,
   scaffoldBackgroundColor: Colors.black,
   textSelectionTheme: const TextSelectionThemeData(
     cursorColor: Colors.grey,
@@ -28,11 +27,6 @@ const cupertinoTheme = CupertinoThemeData(
     textStyle: TextStyle(
       fontFamily: MyFonts.w400,
       color: Colors.black,
-    ),
-    dateTimePickerTextStyle: TextStyle(
-      color: Colors.white,
-      fontSize: 24,
-      fontFamily: MyFonts.w400,
     ),
   ),
 );

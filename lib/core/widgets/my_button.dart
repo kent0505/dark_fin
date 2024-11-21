@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../config/themes.dart';
+import '../config/dark_theme.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({
