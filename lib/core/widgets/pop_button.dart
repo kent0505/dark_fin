@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/fonts.dart';
+import '../config/my_fonts.dart';
 import 'my_button.dart';
 
 class PopButton extends StatelessWidget {
@@ -23,7 +23,7 @@ class PopButton extends StatelessWidget {
         style: const TextStyle(
           color: Colors.white,
           fontSize: 17,
-          fontFamily: Fonts.w300,
+          fontFamily: MyFonts.w300,
         ),
       ),
     );

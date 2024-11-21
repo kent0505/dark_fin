@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../blocs/incom/incom_bloc.dart';
-import '../../core/utils.dart';
+import '../../core/utilsss.dart';
 import '../../core/widgets/loading_widget.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,7 +14,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  void load() async {
+  void initFunc() async {
     await initDB().then((value) {
       if (mounted) context.read<IncomBloc>().add(IncomGet());
 
@@ -33,13 +33,13 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    load();
+    initFunc();
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: LoadingWidget(),
+      body: LoadingIndicator(),
     );
   }
 }

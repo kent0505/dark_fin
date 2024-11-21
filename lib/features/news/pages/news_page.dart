@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../blocs/button/button_bloc.dart';
-import '../../../core/models/news.dart';
-import '../../../core/utils.dart';
+import '../../../blocs/btn/btn_bloc.dart';
+import '../../../core/models/newss.dart';
+import '../../../core/utilsss.dart';
 import '../../../core/widgets/tab_button.dart';
 import '../../../core/widgets/page_title.dart';
-import '../widgets/news_card.dart';
+import '../widgets/news_widget.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -27,7 +27,7 @@ class _NewsPageState extends State<NewsPage> {
 
   void onCategory(String value) {
     category = value;
-    context.read<ButtonBloc>().add(CheckButtonActive(controllers: const ['']));
+    context.read<BtnBloc>().add(CheckBtnActive(controllers: const ['']));
   }
 
   @override
@@ -39,7 +39,7 @@ class _NewsPageState extends State<NewsPage> {
         const SizedBox(height: 26),
         SizedBox(
           height: 36,
-          child: BlocBuilder<ButtonBloc, ButtonState>(
+          child: BlocBuilder<BtnBloc, BtnState>(
             builder: (context, state) {
               return ListView(
                 scrollDirection: Axis.horizontal,
@@ -60,7 +60,7 @@ class _NewsPageState extends State<NewsPage> {
         ),
         const SizedBox(height: 10),
         Expanded(
-          child: BlocBuilder<ButtonBloc, ButtonState>(
+          child: BlocBuilder<BtnBloc, BtnState>(
             builder: (context, state) {
               return ListView.builder(
                 padding: const EdgeInsets.symmetric(
@@ -70,9 +70,9 @@ class _NewsPageState extends State<NewsPage> {
                 itemCount: newsList.length,
                 itemBuilder: (context, index) {
                   if (category == 'All') {
-                    return NewsCard(news: newsList[index]);
+                    return NewsWidget(newss: newsList[index]);
                   } else if (newsList[index].category == category) {
-                    return NewsCard(news: newsList[index]);
+                    return NewsWidget(newss: newsList[index]);
                   }
                   return const SizedBox();
                 },

@@ -12,10 +12,7 @@ Future<void> initDB() async {
   try {
     await Hive.initFlutter();
     final prefs = await SharedPreferences.getInstance();
-    // await prefs.remove('onboard');
-    // await prefs.clear();
     onboard = prefs.getBool('onboard') ?? true;
-    // await Hive.deleteBoxFromDisk(DB.'darkfinbox');
     Hive.registerAdapter(IncomAdap());
   } catch (_) {}
 }
@@ -40,7 +37,7 @@ int getTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
 String formatNumber(int number) => NumberFormat('#,###').format(number);
 double getStatusBar(BuildContext context, {int height = 0}) =>
     MediaQuery.of(context).viewPadding.top + height;
-double getBottom(BuildContext context) =>
+double getBot(BuildContext context) =>
     MediaQuery.of(context).viewPadding.bottom;
 double getWidth(BuildContext context) => MediaQuery.of(context).size.width;
 double getHeight(BuildContext context) => MediaQuery.of(context).size.height;
@@ -50,5 +47,6 @@ int getBalance() {
   for (Incom incom in incomsList) {
     total += incom.amount;
   }
+  print(total);
   return total;
 }

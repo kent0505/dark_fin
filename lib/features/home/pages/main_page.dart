@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../blocs/button/button_bloc.dart';
+import '../../../blocs/btn/btn_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
-import '../../../core/config/fonts.dart';
-import '../../../core/utils.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/utilsss.dart';
 import '../../../core/widgets/tab_button.dart';
-import '../../../core/widgets/no_data.dart';
+import '../../../core/widgets/nodata.dart';
 import '../../../core/widgets/page_title.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/income_card.dart';
@@ -65,7 +65,7 @@ class MainPageState extends State<MainPage> {
         const SizedBox(height: 26),
         SizedBox(
           height: 36,
-          child: BlocBuilder<ButtonBloc, ButtonState>(
+          child: BlocBuilder<BtnBloc, BtnState>(
             builder: (context, state) {
               return ListView(
                 scrollDirection: Axis.horizontal,
@@ -103,7 +103,7 @@ class MainPageState extends State<MainPage> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 13,
-                      fontFamily: Fonts.w700,
+                      fontFamily: MyFonts.w700,
                     ),
                   ),
                 ],
@@ -137,7 +137,7 @@ class MainPageState extends State<MainPage> {
               builder: (context, state) {
                 if (state is IncomLoadedState) {
                   if (state.incoms.isEmpty) {
-                    return const NoData();
+                    return const Nodata();
                   }
 
                   return ListView.builder(
@@ -187,7 +187,7 @@ class MainPageState extends State<MainPage> {
                         color: Colors.white,
                       ),
                       child: const Center(
-                        child: SvgWidget('assets/arrow.svg'),
+                        child: SVGWidgett('assets/arrow.svg'),
                       ),
                     ),
                   ),
@@ -228,7 +228,7 @@ class _CurrencyCard extends StatelessWidget {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
-              fontFamily: Fonts.w600,
+              fontFamily: MyFonts.w600,
             ),
           ),
           const SizedBox(width: 5),
@@ -244,7 +244,7 @@ class _CurrencyCard extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: Fonts.w600,
+                fontFamily: MyFonts.w600,
               ),
               inputFormatters: [
                 LengthLimitingTextInputFormatter(10),
@@ -256,7 +256,7 @@ class _CurrencyCard extends StatelessWidget {
                 hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 20,
-                  fontFamily: Fonts.w600,
+                  fontFamily: MyFonts.w600,
                 ),
               ),
               onChanged: (value) {

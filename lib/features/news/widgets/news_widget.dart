@@ -1,19 +1,19 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-import '../../../core/config/fonts.dart';
-import '../../../core/models/news.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/models/newss.dart';
 import '../../../core/widgets/my_button.dart';
 
-class NewsCard extends StatelessWidget {
-  const NewsCard({
+class NewsWidget extends StatelessWidget {
+  const NewsWidget({
     super.key,
-    required this.news,
+    required this.newss,
     this.balanceCard = false,
   });
 
-  final News news;
+  final Newss newss;
   final bool balanceCard;
 
   @override
@@ -33,7 +33,7 @@ class NewsCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(42),
               child: CachedNetworkImage(
-                imageUrl: news.image,
+                imageUrl: newss.image,
                 height: 42,
                 width: 42,
                 fit: BoxFit.cover,
@@ -49,21 +49,21 @@ class NewsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  news.title,
+                  newss.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
-                    fontFamily: Fonts.w600,
+                    fontFamily: MyFonts.w600,
                   ),
                 ),
                 Text(
-                  news.time,
+                  newss.time,
                   style: const TextStyle(
                     color: Color(0xffA7A7A7),
                     fontSize: 10,
-                    fontFamily: Fonts.w400,
+                    fontFamily: MyFonts.w400,
                   ),
                 ),
               ],
@@ -71,7 +71,7 @@ class NewsCard extends StatelessWidget {
           ),
           MyButton(
             onPressed: () {
-              context.push('/news_read', extra: news);
+              context.push('/news_read', extra: newss);
             },
             minSize: 30,
             child: Container(
@@ -87,7 +87,7 @@ class NewsCard extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 13,
-                    fontFamily: Fonts.w500,
+                    fontFamily: MyFonts.w500,
                   ),
                 ),
               ),

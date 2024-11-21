@@ -6,14 +6,14 @@ class MyButton extends StatelessWidget {
   const MyButton({
     super.key,
     this.onPressed,
-    this.padding = 0,
     this.minSize = kMinInteractiveDimensionCupertino,
+    this.padding = 0,
     required this.child,
   });
 
-  final void Function()? onPressed;
-  final double padding;
   final double minSize;
+  final double padding;
+  final void Function()? onPressed;
   final Widget child;
 
   @override
@@ -21,9 +21,9 @@ class MyButton extends StatelessWidget {
     return CupertinoTheme(
       data: cupertinoTheme,
       child: CupertinoButton(
-        onPressed: onPressed,
         padding: EdgeInsets.all(padding),
         minSize: minSize,
+        onPressed: onPressed,
         child: child,
       ),
     );

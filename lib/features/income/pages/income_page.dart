@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../blocs/button/button_bloc.dart';
+import '../../../blocs/btn/btn_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
-import '../../../blocs/navbar/navbar_bloc.dart';
+import '../../../blocs/nav/nav_bloc.dart';
 import '../../../core/models/incom.dart';
-import '../../../core/utils.dart';
+import '../../../core/utilsss.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/tab_button.dart';
-import '../../../core/widgets/txt_field.dart';
+import '../../../core/widgets/my_field.dart';
 import '../../../core/widgets/page_title.dart';
 
 class IncomePage extends StatefulWidget {
@@ -29,8 +29,8 @@ class _IncomePageState extends State<IncomePage> {
   ];
 
   void checkButton() {
-    context.read<ButtonBloc>().add(
-          CheckButtonActive(
+    context.read<BtnBloc>().add(
+          CheckBtnActive(
             controllers: [
               categoryController.text,
               titleController.text,
@@ -57,8 +57,8 @@ class _IncomePageState extends State<IncomePage> {
       amount: int.parse(amountController.text),
     );
     context.read<IncomBloc>().add(IncomAdd(incom: incom));
-    context.read<NavbarBloc>().add(ChangeNavbar(index: 1));
-    context.read<ButtonBloc>().add(DisableButton());
+    context.read<NavBloc>().add(ChangeNav(index: 1));
+    context.read<BtnBloc>().add(DisableBtn());
   }
 
   @override
@@ -84,7 +84,7 @@ class _IncomePageState extends State<IncomePage> {
         const SizedBox(height: 26),
         SizedBox(
           height: 36,
-          child: BlocBuilder<ButtonBloc, ButtonState>(
+          child: BlocBuilder<BtnBloc, BtnState>(
             builder: (context, state) {
               return ListView(
                 scrollDirection: Axis.horizontal,
@@ -106,14 +106,14 @@ class _IncomePageState extends State<IncomePage> {
         const SizedBox(height: 50),
         const PageTitle('Add Transaction'),
         const SizedBox(height: 16),
-        TxtField(
+        MyField(
           controller: titleController,
           hintText: 'Income description',
           horizontalPadding: 16,
           onChanged: checkButton,
         ),
         const SizedBox(height: 16),
-        TxtField(
+        MyField(
           controller: amountController,
           hintText: 'Income amount',
           onlyNumber: true,

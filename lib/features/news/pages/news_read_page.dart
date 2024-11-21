@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../../../core/config/fonts.dart';
-import '../../../core/models/news.dart';
-import '../../../core/utils.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/models/newss.dart';
+import '../../../core/utilsss.dart';
+import '../../../core/widgets/my_button.dart';
 import '../../../core/widgets/pop_button.dart';
 
 class NewsReadPage extends StatelessWidget {
@@ -13,7 +14,7 @@ class NewsReadPage extends StatelessWidget {
     required this.news,
   });
 
-  final News news;
+  final Newss news;
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +47,15 @@ class NewsReadPage extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 24,
-                    fontFamily: Fonts.w800,
+                    fontFamily: MyFonts.w800,
                   ),
                 ),
                 const SizedBox(height: 16),
                 const Row(
                   children: [
-                    // like button
+                    _Button(title: 'Like'),
                     SizedBox(width: 32),
-                    // share button
+                    _Button(title: 'Share'),
                   ],
                 ),
                 const SizedBox(height: 10),
@@ -76,7 +77,7 @@ class NewsReadPage extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 13,
-                    fontFamily: Fonts.w400,
+                    fontFamily: MyFonts.w400,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -91,7 +92,7 @@ class NewsReadPage extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
-                      fontFamily: Fonts.w500,
+                      fontFamily: MyFonts.w500,
                     ),
                   ),
                 ),
@@ -100,6 +101,47 @@ class NewsReadPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _Button extends StatelessWidget {
+  const _Button({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 36,
+      width: 113,
+      decoration: BoxDecoration(
+        color: const Color(0xff343434),
+        borderRadius: BorderRadius.circular(36),
+      ),
+      child: MyButton(
+        onPressed: () {},
+        minSize: 36,
+        child: Row(
+          children: [
+            const SizedBox(width: 10),
+            Icon(
+              title == 'Like' ? Icons.favorite : Icons.ios_share_rounded,
+              size: 16,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: MyFonts.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

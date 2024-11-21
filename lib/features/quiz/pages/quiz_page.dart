@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../blocs/button/button_bloc.dart';
-import '../../../core/config/fonts.dart';
-import '../../../core/models/question.dart';
-import '../../../core/utils.dart';
+import '../../../blocs/btn/btn_bloc.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/models/questionn.dart';
+import '../../../core/utilsss.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/my_dialog.dart';
-import '../widgets/answer_card.dart';
-import '../widgets/question_card.dart';
+import '../widgets/answer_widget.dart';
+import '../widgets/question_widget.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -24,9 +24,7 @@ class _QuizPageState extends State<QuizPage> {
   Answer _answer = defaultAnswer;
 
   void checkButton() {
-    context
-        .read<ButtonBloc>()
-        .add(CheckButtonActive(controllers: [_answer.title]));
+    context.read<BtnBloc>().add(CheckBtnActive(controllers: [_answer.title]));
   }
 
   void onAnswer(Answer value) {
@@ -64,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
     super.initState();
     checkButton();
     questionsList.shuffle();
-    for (Question question in questionsList) {
+    for (Questionn question in questionsList) {
       question.answers.shuffle();
     }
   }
@@ -75,49 +73,49 @@ class _QuizPageState extends State<QuizPage> {
       children: [
         SizedBox(height: getStatusBar(context, height: 56)),
         Center(
-          child: BlocBuilder<ButtonBloc, ButtonState>(
+          child: BlocBuilder<BtnBloc, BtnState>(
             builder: (context, state) {
               return Text(
                 'Question ${index + 1}/20',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
-                  fontFamily: Fonts.w800,
+                  fontFamily: MyFonts.w800,
                 ),
               );
             },
           ),
         ),
         const SizedBox(height: 30),
-        BlocBuilder<ButtonBloc, ButtonState>(
+        BlocBuilder<BtnBloc, BtnState>(
           builder: (context, state) {
-            return QuestionCard(question: questionsList[index].title);
+            return QuestionWidget(question: questionsList[index].title);
           },
         ),
         const SizedBox(height: 30),
-        BlocBuilder<ButtonBloc, ButtonState>(
+        BlocBuilder<BtnBloc, BtnState>(
           builder: (context, state) {
             return Column(
               children: [
-                AnswerCard(
+                AnswerWidget(
                   id: 1,
                   answer: questionsList[index].answers[0],
                   current: _answer,
                   onPressed: onAnswer,
                 ),
-                AnswerCard(
+                AnswerWidget(
                   id: 2,
                   answer: questionsList[index].answers[1],
                   current: _answer,
                   onPressed: onAnswer,
                 ),
-                AnswerCard(
+                AnswerWidget(
                   id: 3,
                   answer: questionsList[index].answers[2],
                   current: _answer,
                   onPressed: onAnswer,
                 ),
-                AnswerCard(
+                AnswerWidget(
                   id: 4,
                   answer: questionsList[index].answers[3],
                   current: _answer,

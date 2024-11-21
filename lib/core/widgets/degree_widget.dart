@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RotatedWidget extends StatelessWidget {
-  const RotatedWidget({
+class DegreeWidget extends StatelessWidget {
+  const DegreeWidget({
     super.key,
     required this.degree,
     required this.child,

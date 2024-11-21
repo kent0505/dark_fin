@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/config/fonts.dart';
-import '../../core/utils.dart';
+import '../../core/config/my_fonts.dart';
+import '../../core/utilsss.dart';
 import '../../core/widgets/main_button.dart';
 import '../../core/widgets/my_button.dart';
-import '../../core/widgets/rotated_widget.dart';
+import '../../core/widgets/degree_widget.dart';
 import '../../core/widgets/svg_widget.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -85,7 +85,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             style: TextStyle(
                               color: Color(0xff171B34),
                               fontSize: 12,
-                              fontFamily: Fonts.w800,
+                              fontFamily: MyFonts.w800,
                             ),
                           ),
                           SizedBox(height: 8),
@@ -95,7 +95,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             style: TextStyle(
                               color: Color(0xff505050),
                               fontSize: 10,
-                              fontFamily: Fonts.w500,
+                              fontFamily: MyFonts.w500,
                               height: 1.8,
                             ),
                           ),
@@ -127,16 +127,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   ),
                   const Positioned(
                     left: 30,
-                    child: SvgWidget('assets/onboarding2.svg'),
+                    child: SVGWidgett('assets/onboarding2.svg'),
                   ),
                   Positioned(
                     top: 36,
                     right: 15,
                     child: Transform.scale(
                       scale: 0.9,
-                      child: const RotatedWidget(
+                      child: const DegreeWidget(
                         degree: 20,
-                        child: SvgWidget('assets/onboarding2.svg'),
+                        child: SVGWidgett('assets/onboarding2.svg'),
                       ),
                     ),
                   ),
@@ -145,9 +145,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     left: 60,
                     child: Transform.scale(
                       scale: 0.7,
-                      child: const RotatedWidget(
+                      child: const DegreeWidget(
                         degree: -20,
-                        child: SvgWidget('assets/onboarding2.svg'),
+                        child: SVGWidgett('assets/onboarding2.svg'),
                       ),
                     ),
                   ),
@@ -191,11 +191,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SvgWidget('assets/star.svg'),
-                                SvgWidget('assets/star.svg'),
-                                SvgWidget('assets/star.svg'),
-                                SvgWidget('assets/star.svg'),
-                                SvgWidget('assets/star.svg'),
+                                SVGWidgett('assets/star.svg'),
+                                SVGWidgett('assets/star.svg'),
+                                SVGWidgett('assets/star.svg'),
+                                SVGWidgett('assets/star.svg'),
+                                SVGWidgett('assets/star.svg'),
                               ],
                             ),
                           ),
@@ -227,7 +227,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
-                        fontFamily: Fonts.w600,
+                        fontFamily: MyFonts.w600,
                       ),
                     ),
                   ),
@@ -237,7 +237,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
-                      fontFamily: Fonts.w800,
+                      fontFamily: MyFonts.w800,
                     ),
                   ),
                 if (index == 2) const Spacer(),
@@ -250,7 +250,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 11,
-                        fontFamily: Fonts.w500,
+                        fontFamily: MyFonts.w500,
                       ),
                     ),
                   ),

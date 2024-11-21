@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/button/button_bloc.dart';
-import '../config/fonts.dart';
+import '../../blocs/btn/btn_bloc.dart';
+import '../config/my_fonts.dart';
 import 'my_button.dart';
 import 'svg_widget.dart';
 
-class TxtField extends StatelessWidget {
-  const TxtField({
+class MyField extends StatelessWidget {
+  const MyField({
     super.key,
     required this.controller,
     required this.hintText,
@@ -44,7 +44,7 @@ class TxtField extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,
-                fontFamily: Fonts.w300,
+                fontFamily: MyFonts.w300,
               ),
             ),
           ),
@@ -58,7 +58,7 @@ class TxtField extends StatelessWidget {
             textCapitalization: TextCapitalization.sentences,
             style: const TextStyle(
               color: Colors.white,
-              fontFamily: Fonts.w500,
+              fontFamily: MyFonts.w500,
               fontSize: 17,
             ),
             decoration: InputDecoration(
@@ -78,7 +78,7 @@ class TxtField extends StatelessWidget {
           Positioned(
             top: 18,
             right: 18,
-            child: BlocBuilder<ButtonBloc, ButtonState>(
+            child: BlocBuilder<BtnBloc, BtnState>(
               builder: (context, state) {
                 return MyButton(
                   onPressed: controller.text.isEmpty
@@ -98,7 +98,7 @@ class TxtField extends StatelessWidget {
                           : Colors.black,
                     ),
                     child: const Center(
-                      child: SvgWidget('assets/clear.svg'),
+                      child: SVGWidgett('assets/clear.svg'),
                     ),
                   ),
                 );

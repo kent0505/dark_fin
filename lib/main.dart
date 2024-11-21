@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/config/router.dart';
 import 'core/config/themes.dart';
-import 'blocs/button/button_bloc.dart';
-import 'blocs/navbar/navbar_bloc.dart';
+import 'blocs/btn/btn_bloc.dart';
+import 'blocs/nav/nav_bloc.dart';
 import 'blocs/incom/incom_bloc.dart';
 
 void main() async {
@@ -34,12 +34,12 @@ class MyAppp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) {
-            return NavbarBloc();
+            return NavBloc();
           },
         ),
         BlocProvider(
           create: (context) {
-            return ButtonBloc();
+            return BtnBloc();
           },
         ),
       ],

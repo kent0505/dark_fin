@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/incom/incom_bloc.dart';
-import '../../../blocs/navbar/navbar_bloc.dart';
-import '../../../core/config/fonts.dart';
-import '../../../core/models/news.dart';
-import '../../../core/utils.dart';
+import '../../../blocs/nav/nav_bloc.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/models/newss.dart';
+import '../../../core/utilsss.dart';
 import '../../../core/widgets/my_button.dart';
 import '../../../core/widgets/svg_widget.dart';
-import '../../news/widgets/news_card.dart';
+import '../../news/widgets/news_widget.dart';
 
 class BalanceCard extends StatelessWidget {
   const BalanceCard({super.key, this.onExchange});
@@ -36,7 +36,7 @@ class BalanceCard extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
-                  fontFamily: Fonts.w600,
+                  fontFamily: MyFonts.w600,
                 ),
               );
             },
@@ -47,7 +47,7 @@ class BalanceCard extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
-              fontFamily: Fonts.w400,
+              fontFamily: MyFonts.w400,
             ),
           ),
           const SizedBox(height: 16),
@@ -75,14 +75,14 @@ class BalanceCard extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontSize: 13,
-              fontFamily: Fonts.w500,
+              fontFamily: MyFonts.w500,
             ),
           ),
           const SizedBox(height: 14),
-          NewsCard(news: newsList[0], balanceCard: true),
-          NewsCard(news: newsList[1], balanceCard: true),
-          NewsCard(news: newsList[2], balanceCard: true),
-          NewsCard(news: newsList[3], balanceCard: true),
+          NewsWidget(newss: newsList[0], balanceCard: true),
+          NewsWidget(newss: newsList[1], balanceCard: true),
+          NewsWidget(newss: newsList[2], balanceCard: true),
+          NewsWidget(newss: newsList[3], balanceCard: true),
         ],
       ),
     );
@@ -108,7 +108,7 @@ class _Button extends StatelessWidget {
           onPressed: onExchange ??
               () {
                 if (id == 1) {
-                  context.read<NavbarBloc>().add(ChangeNavbar(index: 2));
+                  context.read<NavBloc>().add(ChangeNav(index: 2));
                 }
               },
           child: Container(
@@ -119,7 +119,7 @@ class _Button extends StatelessWidget {
               color: Color(0xff404040),
             ),
             child: Center(
-              child: SvgWidget('assets/balance$id.svg'),
+              child: SVGWidgett('assets/balance$id.svg'),
             ),
           ),
         ),
@@ -129,7 +129,7 @@ class _Button extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 13,
-            fontFamily: Fonts.w500,
+            fontFamily: MyFonts.w500,
           ),
         ),
       ],

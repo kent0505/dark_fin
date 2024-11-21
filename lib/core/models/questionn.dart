@@ -1,5 +1,5 @@
-class Question {
-  Question({
+class Questionn {
+  Questionn({
     required this.title,
     required this.answers,
   });
@@ -23,8 +23,8 @@ final defaultAnswer = Answer(
   isCorrect: false,
 );
 
-List<Question> questionsList = [
-  Question(
+List<Questionn> questionsList = [
+  Questionn(
     title: "What is the primary purpose of a budget?",
     answers: [
       Answer(title: "To track expenses", isCorrect: false),
@@ -33,7 +33,7 @@ List<Question> questionsList = [
       Answer(title: "To invest in stocks", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "Which type of account typically offers the highest interest rate?",
     answers: [
       Answer(title: "Savings account", isCorrect: false),
@@ -42,7 +42,7 @@ List<Question> questionsList = [
       Answer(title: "Checking account", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What does ROI stand for in finance?",
     answers: [
       Answer(title: "Rate of Investment", isCorrect: false),
@@ -51,7 +51,7 @@ List<Question> questionsList = [
       Answer(title: "Ratio of Income", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "Which is an example of a fixed expense?",
     answers: [
       Answer(title: "Electricity bill", isCorrect: false),
@@ -60,7 +60,7 @@ List<Question> questionsList = [
       Answer(title: "Entertainment", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is a stock?",
     answers: [
       Answer(title: "A type of bond", isCorrect: false),
@@ -69,7 +69,7 @@ List<Question> questionsList = [
       Answer(title: "A mutual fund", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What does 'liquidity' refer to in finance?",
     answers: [
       Answer(title: "The ability to pay debts", isCorrect: false),
@@ -78,7 +78,7 @@ List<Question> questionsList = [
       Answer(title: "The value of an investment", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is the primary goal of investing?",
     answers: [
       Answer(title: "To save money", isCorrect: false),
@@ -87,7 +87,7 @@ List<Question> questionsList = [
       Answer(title: "To reduce expenses", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is the term for money borrowed from a lender?",
     answers: [
       Answer(title: "Deposit", isCorrect: false),
@@ -96,7 +96,7 @@ List<Question> questionsList = [
       Answer(title: "Revenue", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "Which type of investment is considered the safest?",
     answers: [
       Answer(title: "Stocks", isCorrect: false),
@@ -105,7 +105,7 @@ List<Question> questionsList = [
       Answer(title: "Cryptocurrency", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is the primary purpose of insurance?",
     answers: [
       Answer(title: "To maximize profits", isCorrect: false),
@@ -114,7 +114,7 @@ List<Question> questionsList = [
       Answer(title: "To increase income", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is a credit score?",
     answers: [
       Answer(title: "A measure of income", isCorrect: false),
@@ -123,7 +123,7 @@ List<Question> questionsList = [
       Answer(title: "The interest rate on a loan", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is compound interest?",
     answers: [
       Answer(
@@ -137,7 +137,7 @@ List<Question> questionsList = [
       Answer(title: "A fixed interest rate", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is diversification in investing?",
     answers: [
       Answer(title: "Investing in a single asset", isCorrect: false),
@@ -148,7 +148,7 @@ List<Question> questionsList = [
       Answer(title: "Investing only in real estate", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What does a balance sheet show?",
     answers: [
       Answer(title: "A company's income and expenses", isCorrect: false),
@@ -159,7 +159,7 @@ List<Question> questionsList = [
       Answer(title: "Future projections of profits", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is the term for the money a company earns before expenses?",
     answers: [
       Answer(title: "Revenue", isCorrect: true),
@@ -168,7 +168,7 @@ List<Question> questionsList = [
       Answer(title: "Expense", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "Which of the following is an example of an asset?",
     answers: [
       Answer(title: "Bank loan", isCorrect: false),
@@ -177,7 +177,7 @@ List<Question> questionsList = [
       Answer(title: "Credit card debt", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is inflation?",
     answers: [
       Answer(title: "A decrease in prices over time", isCorrect: false),
@@ -188,7 +188,7 @@ List<Question> questionsList = [
       Answer(title: "The interest rate on a loan", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What does 'net worth' represent?",
     answers: [
       Answer(title: "Income minus taxes", isCorrect: false),
@@ -197,7 +197,7 @@ List<Question> questionsList = [
       Answer(title: "Gross income", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "Which of the following is a liability?",
     answers: [
       Answer(title: "Cash", isCorrect: false),
@@ -206,7 +206,7 @@ List<Question> questionsList = [
       Answer(title: "Properties", isCorrect: false),
     ],
   ),
-  Question(
+  Questionn(
     title: "What is a mutual fund?",
     answers: [
       Answer(title: "An individual stock investment", isCorrect: false),

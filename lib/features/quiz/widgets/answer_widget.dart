@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/fonts.dart';
-import '../../../core/models/question.dart';
+import '../../../core/config/my_fonts.dart';
+import '../../../core/models/questionn.dart';
 import '../../../core/widgets/my_button.dart';
 
-class AnswerCard extends StatelessWidget {
-  const AnswerCard({
+class AnswerWidget extends StatelessWidget {
+  const AnswerWidget({
     super.key,
     required this.id,
     required this.answer,
@@ -43,7 +43,7 @@ class AnswerCard extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 17,
-                fontFamily: Fonts.w500,
+                fontFamily: MyFonts.w500,
               ),
             ),
             Expanded(
@@ -54,7 +54,7 @@ class AnswerCard extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17,
-                  fontFamily: Fonts.w500,
+                  fontFamily: MyFonts.w500,
                 ),
               ),
             ),

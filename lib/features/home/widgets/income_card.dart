@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/config/fonts.dart';
+import '../../../core/config/my_fonts.dart';
 import '../../../core/models/incom.dart';
 import '../../../core/widgets/my_button.dart';
 
@@ -54,7 +54,7 @@ class IncomeCard extends StatelessWidget {
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 12,
-                      fontFamily: Fonts.w600,
+                      fontFamily: MyFonts.w600,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -63,7 +63,7 @@ class IncomeCard extends StatelessWidget {
                     style: TextStyle(
                       color: Color(0xff00AE9A),
                       fontSize: 8,
-                      fontFamily: Fonts.w400,
+                      fontFamily: MyFonts.w400,
                     ),
                   ),
                 ],
@@ -74,7 +74,7 @@ class IncomeCard extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
-                fontFamily: Fonts.w600,
+                fontFamily: MyFonts.w600,
               ),
             ),
             const SizedBox(width: 20),

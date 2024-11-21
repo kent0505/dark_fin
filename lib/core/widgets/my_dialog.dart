@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/fonts.dart';
+import '../config/my_fonts.dart';
 import 'my_button.dart';
 
 class MyDialog extends StatelessWidget {
@@ -30,12 +30,12 @@ class MyDialog extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
-                fontFamily: Fonts.w700,
+                fontFamily: MyFonts.w700,
               ),
             ),
             const Spacer(),
             if (onlyClose)
-              _Button(
+              _DialogButton(
                 title: 'OK',
                 onPressed: onYes,
               )
@@ -43,14 +43,14 @@ class MyDialog extends StatelessWidget {
               Row(
                 children: [
                   const SizedBox(width: 20),
-                  _Button(
+                  _DialogButton(
                     title: 'NO',
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
                   const Spacer(),
-                  _Button(
+                  _DialogButton(
                     title: 'YES',
                     onPressed: () {
                       Navigator.pop(context);
@@ -68,8 +68,8 @@ class MyDialog extends StatelessWidget {
   }
 }
 
-class _Button extends StatelessWidget {
-  const _Button({
+class _DialogButton extends StatelessWidget {
+  const _DialogButton({
     required this.title,
     required this.onPressed,
   });
@@ -90,7 +90,7 @@ class _Button extends StatelessWidget {
             style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
-              fontFamily: Fonts.w600,
+              fontFamily: MyFonts.w600,
             ),
           ),
         ],

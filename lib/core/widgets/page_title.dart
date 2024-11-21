@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/fonts.dart';
+import '../config/my_fonts.dart';
 
 class PageTitle extends StatelessWidget {
   const PageTitle(this.title, {super.key});
@@ -17,7 +17,7 @@ class PageTitle extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 17,
-            fontFamily: Fonts.w600,
+            fontFamily: MyFonts.w600,
           ),
         ),
       ],

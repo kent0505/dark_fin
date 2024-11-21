@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/utils.dart';
-import '../../../blocs/navbar/navbar_bloc.dart';
+import '../../../core/utilsss.dart';
+import '../../../blocs/nav/nav_bloc.dart';
 import '../../income/pages/income_page.dart';
 import '../../news/pages/news_page.dart';
 import '../../quiz/pages/quiz_page.dart';
@@ -19,15 +19,12 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 62 + getBottom(context)),
-            child: BlocBuilder<NavbarBloc, NavbarState>(
+            padding: EdgeInsets.only(bottom: 62 + getBot(context)),
+            child: BlocBuilder<NavBloc, NavState>(
               builder: (context, state) {
-                if (state is NavbarIncome) return const IncomePage();
-
-                if (state is NavbarNews) return const NewsPage();
-
-                if (state is NavbarQuiz) return const QuizPage();
-
+                if (state is NavIncome) return const IncomePage();
+                if (state is NavNews) return const NewsPage();
+                if (state is NavQuiz) return const QuizPage();
                 return const MainPage();
               },
             ),

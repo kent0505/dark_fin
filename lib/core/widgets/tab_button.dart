@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../config/fonts.dart';
+import '../config/my_fonts.dart';
 import 'my_button.dart';
 
 class TabButton extends StatelessWidget {
@@ -38,7 +38,7 @@ class TabButton extends StatelessWidget {
             style: TextStyle(
               color: title == current ? Colors.black : Colors.white,
               fontSize: 15,
-              fontFamily: Fonts.w500,
+              fontFamily: MyFonts.w500,
             ),
           ),
         ),

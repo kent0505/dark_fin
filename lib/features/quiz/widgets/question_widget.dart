@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/config/fonts.dart';
+import '../../../core/config/my_fonts.dart';
 
-class QuestionCard extends StatelessWidget {
-  const QuestionCard({
+class QuestionWidget extends StatelessWidget {
+  const QuestionWidget({
     super.key,
     required this.question,
   });
@@ -30,7 +30,7 @@ class QuestionCard extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontSize: 30,
-            fontFamily: Fonts.w800,
+            fontFamily: MyFonts.w800,
           ),
         ),
       ),
