@@ -41,10 +41,7 @@ class MainPageState extends State<MainPage> {
         const SizedBox(height: 26),
         SizedBox(
           height: 36,
-          child: BlocConsumer<ButtonBloc, ButtonState>(
-            listener: (context, state) {
-              logger(state.runtimeType);
-            },
+          child: BlocBuilder<ButtonBloc, ButtonState>(
             builder: (context, state) {
               return ListView(
                 scrollDirection: Axis.horizontal,

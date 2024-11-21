@@ -36,7 +36,6 @@ class _QuizPageState extends State<QuizPage> {
 
   void onContinue() {
     if (_answer.isCorrect) correctAnswers++;
-    logger(correctAnswers);
     _answer = defaultAnswer;
     if (index == 19) {
       showDialog(

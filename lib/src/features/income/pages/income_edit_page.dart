@@ -36,7 +36,6 @@ class _IncomeEditPageState extends State<IncomeEditPage> {
   ];
 
   void checkButton() {
-    logger('checkButton');
     context.read<ButtonBloc>().add(
           CheckButtonActive(
             controllers: [
@@ -116,10 +115,7 @@ class _IncomeEditPageState extends State<IncomeEditPage> {
           const SizedBox(height: 26),
           SizedBox(
             height: 36,
-            child: BlocConsumer<ButtonBloc, ButtonState>(
-              listener: (context, state) {
-                logger(state.runtimeType);
-              },
+            child: BlocBuilder<ButtonBloc, ButtonState>(
               builder: (context, state) {
                 return ListView(
                   scrollDirection: Axis.horizontal,

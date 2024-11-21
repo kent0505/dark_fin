@@ -20,10 +20,7 @@ class HomePage extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(bottom: 62 + getBottom(context)),
-            child: BlocConsumer<NavbarBloc, NavbarState>(
-              listener: (context, state) {
-                logger(state.runtimeType);
-              },
+            child: BlocBuilder<NavbarBloc, NavbarState>(
               builder: (context, state) {
                 if (state is NavbarIncome) return const IncomePage();
 

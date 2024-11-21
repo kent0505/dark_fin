@@ -17,8 +17,8 @@ final routerConfig = GoRouter(
       builder: (context, state) => const SplashPage(),
     ),
     GoRoute(
-      path: '/onboard',
-      builder: (context, state) => const OnboardPage(),
+      path: '/onboarding',
+      builder: (context, state) => const OnboardingPage(),
     ),
     GoRoute(
       path: '/home',
