@@ -5,8 +5,10 @@ sealed class IncomState {}
 
 final class IncomInitial extends IncomState {}
 
-final class IncomLoadedState extends IncomState {
-  IncomLoadedState({required this.incoms});
+final class IncomLoaded extends IncomState {
+  IncomLoaded({required this.incoms});
 
   final List<Incom> incoms;
 }
+
+final class IncomLoading extends IncomState {}

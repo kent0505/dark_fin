@@ -111,7 +111,7 @@ class MainPageState extends State<MainPage> {
               const SizedBox(height: 8),
               BlocBuilder<IncomBloc, IncomState>(
                 builder: (context, state) {
-                  if (state is IncomLoadedState) {
+                  if (state is IncomLoaded) {
                     return Column(
                       children: [
                         ...List.generate(
@@ -135,7 +135,7 @@ class MainPageState extends State<MainPage> {
           Expanded(
             child: BlocBuilder<IncomBloc, IncomState>(
               builder: (context, state) {
-                if (state is IncomLoadedState) {
+                if (state is IncomLoaded) {
                   if (state.incoms.isEmpty) {
                     return const Nodata();
                   }

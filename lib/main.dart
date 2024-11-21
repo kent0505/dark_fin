@@ -29,7 +29,7 @@ class MyAppp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) {
-            return IncomBloc();
+            return IncomBloc()..add(IncomGet());
           },
         ),
         BlocProvider(

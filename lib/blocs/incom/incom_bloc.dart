@@ -23,23 +23,27 @@ class IncomBloc extends Bloc<IncomEvent, IncomState> {
     IncomGet event,
     Emitter<IncomState> emit,
   ) async {
+    emit(IncomLoading());
+    await init();
     await getIncoms();
-    emit(IncomLoadedState(incoms: incomsList));
+    emit(IncomLoaded(incoms: incomsList));
   }
 
   void _addIncom(
     IncomAdd event,
     Emitter<IncomState> emit,
   ) async {
+    emit(IncomLoading());
     incomsList.insert(0, event.incom);
     await updateIncoms();
-    emit(IncomLoadedState(incoms: incomsList));
+    emit(IncomLoaded(incoms: incomsList));
   }
 
   void _editIncom(
     IncomEdit event,
     Emitter<IncomState> emit,
   ) async {
+    emit(IncomLoading());
     for (Incom incom in incomsList) {
       if (identical(incom.id, event.incom.id)) {
         incom.category = event.incom.category;
@@ -48,15 +52,16 @@ class IncomBloc extends Bloc<IncomEvent, IncomState> {
       }
     }
     await updateIncoms();
-    emit(IncomLoadedState(incoms: incomsList));
+    emit(IncomLoaded(incoms: incomsList));
   }
 
   void _deleteIncom(
     IncomDelete event,
     Emitter<IncomState> emit,
   ) async {
+    emit(IncomLoading());
     incomsList.removeWhere((model) => identical(model, event.incom));
     await updateIncoms();
-    emit(IncomLoadedState(incoms: incomsList));
+    emit(IncomLoaded(incoms: incomsList));
   }
 }
