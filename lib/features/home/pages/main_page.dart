@@ -86,50 +86,54 @@ class MainPageState extends State<MainPage> {
         ),
         const SizedBox(height: 10),
         if (page == 'Balance')
-          Column(
-            children: [
-              const SizedBox(height: 10),
-              BalanceCard(
-                onExchange: () {
-                  onPage('Currency rate');
-                },
-              ),
-              const SizedBox(height: 16),
-              const Row(
-                children: [
-                  SizedBox(width: 22),
-                  Text(
-                    'Actions',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 13,
-                      fontFamily: MyFonts.w700,
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const SizedBox(height: 10),
+                BalanceCard(
+                  onExchange: () {
+                    onPage('Currency rate');
+                  },
+                ),
+                const SizedBox(height: 16),
+                const Row(
+                  children: [
+                    SizedBox(width: 22),
+                    Text(
+                      'Actions',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontFamily: MyFonts.w700,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              BlocBuilder<IncomBloc, IncomState>(
-                builder: (context, state) {
-                  if (state is IncomLoaded) {
-                    return Column(
-                      children: [
-                        ...List.generate(
-                          state.incoms.length,
-                          (index) {
-                            if (index < 2) {
-                              return IncomeCard(incom: state.incoms[index]);
-                            }
-                            return Container();
-                          },
-                        ),
-                      ],
-                    );
-                  }
-                  return Container();
-                },
-              )
-            ],
+                  ],
+                ),
+                const SizedBox(height: 8),
+                BlocBuilder<IncomBloc, IncomState>(
+                  builder: (context, state) {
+                    if (state is IncomLoaded) {
+                      return Column(
+                        children: [
+                          ...List.generate(
+                            state.incoms.length,
+                            (index) {
+                              if (index < 2) {
+                                return IncomeCard(incom: state.incoms[index]);
+                              }
+                              return Container();
+                            },
+                          ),
+                        ],
+                      );
+                    }
+                    return Container();
+                  },
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
           )
         else if (page == 'History')
           Expanded(
