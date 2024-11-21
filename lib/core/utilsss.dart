@@ -8,28 +8,28 @@ import 'models/incom.dart';
 bool onboard = true;
 List<Incom> incomsList = [];
 
-Future<void> initDB() async {
+Future<void> init() async {
   try {
     await Hive.initFlutter();
-    final prefs = await SharedPreferences.getInstance();
-    onboard = prefs.getBool('onboard') ?? true;
+    final pref = await SharedPreferences.getInstance();
+    onboard = pref.getBool('onboard') ?? true;
     Hive.registerAdapter(IncomAdap());
   } catch (_) {}
 }
 
 Future<void> getIncoms() async {
   try {
-    final box = await Hive.openBox('darkfinbox');
-    List data = box.get('darkfinincomsList') ?? [];
+    final mybox = await Hive.openBox('darkfinbox');
+    List data = mybox.get('darkfinincomsList') ?? [];
     incomsList = data.cast<Incom>();
   } catch (_) {}
 }
 
 Future<void> updateIncoms() async {
   try {
-    final box = await Hive.openBox('darkfinbox');
-    box.put('darkfinincomsList', incomsList);
-    incomsList = await box.get('darkfinincomsList');
+    final mybox = await Hive.openBox('darkfinbox');
+    mybox.put('darkfinincomsList', incomsList);
+    incomsList = await mybox.get('darkfinincomsList');
   } catch (_) {}
 }
 

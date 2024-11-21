@@ -15,8 +15,10 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   void initFunc() async {
-    await initDB().then((value) {
-      if (mounted) context.read<IncomBloc>().add(IncomGet());
+    await init().then((value) {
+      if (mounted) {
+        context.read<IncomBloc>().add(IncomGet());
+      }
 
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
