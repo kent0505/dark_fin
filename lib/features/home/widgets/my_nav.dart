@@ -7,8 +7,8 @@ import '../../../core/widgets/svg_widget.dart';
 import '../../../core/widgets/my_button.dart';
 import '../../../blocs/nav/nav_bloc.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+class MyNav extends StatelessWidget {
+  const MyNav({super.key});
 
   @override
   Widget build(BuildContext context) {

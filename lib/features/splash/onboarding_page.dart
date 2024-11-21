@@ -21,8 +21,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   void onContinue() async {
     if (index == 2) {
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setBool('onboard', false);
+      final pref = await SharedPreferences.getInstance();
+      pref.setBool('onboard', false);
       if (mounted) context.go('/home');
       // setState(() {
       //   index = 1;

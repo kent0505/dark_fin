@@ -6,8 +6,8 @@ import '../../../blocs/nav/nav_bloc.dart';
 import '../../income/pages/income_page.dart';
 import '../../news/pages/news_page.dart';
 import '../../quiz/pages/quiz_page.dart';
-import '../widgets/nav_bar.dart';
-import 'main_page.dart';
+import '../widgets/my_nav.dart';
+import 'initial_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,11 +25,11 @@ class HomePage extends StatelessWidget {
                 if (state is NavIncome) return const IncomePage();
                 if (state is NavNews) return const NewsPage();
                 if (state is NavQuiz) return const QuizPage();
-                return const MainPage();
+                return const InitialPage();
               },
             ),
           ),
-          const NavBar(),
+          const MyNav(),
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:dark_fin/core/widgets/svg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,20 +6,21 @@ import '../../../blocs/btn/btn_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
 import '../../../core/config/my_fonts.dart';
 import '../../../core/utilsss.dart';
+import '../../../core/widgets/svg_widget.dart';
 import '../../../core/widgets/tab_button.dart';
 import '../../../core/widgets/nodata.dart';
 import '../../../core/widgets/page_title.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/income_card.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class InitialPage extends StatefulWidget {
+  const InitialPage({super.key});
 
   @override
-  State<MainPage> createState() => MainPageState();
+  State<InitialPage> createState() => InitialPageState();
 }
 
-class MainPageState extends State<MainPage> {
+class InitialPageState extends State<InitialPage> {
   final currencyController1 = TextEditingController();
   final currencyController2 = TextEditingController();
 
