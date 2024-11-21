@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'src/core/config/router.dart';
-import 'src/core/config/themes.dart';
-import 'src/blocs/button/button_bloc.dart';
-import 'src/blocs/navbar/navbar_bloc.dart';
-import 'src/blocs/incom/incom_bloc.dart';
+import 'core/config/router.dart';
+import 'core/config/themes.dart';
+import 'blocs/button/button_bloc.dart';
+import 'blocs/navbar/navbar_bloc.dart';
+import 'blocs/incom/incom_bloc.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
+  runApp(const MyAppp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppp extends StatelessWidget {
+  const MyAppp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,23 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ButtonBloc()),
-        BlocProvider(create: (context) => NavbarBloc()),
-        BlocProvider(create: (context) => IncomBloc()),
+        BlocProvider(
+          create: (context) {
+            return IncomBloc();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return NavbarBloc();
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            return ButtonBloc();
+          },
+        ),
       ],
       child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
         theme: theme,
         darkTheme: theme,
         routerConfig: routerConfig,
