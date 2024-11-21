@@ -1,4 +1,6 @@
+import 'package:dark_fin/src/core/widgets/others/svg_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/button/button_bloc.dart';
@@ -19,6 +21,9 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
+  final currencyController1 = TextEditingController();
+  final currencyController2 = TextEditingController();
+
   String page = 'Balance';
   List<String> pages = [
     'Balance',
@@ -30,6 +35,25 @@ class MainPageState extends State<MainPage> {
     setState(() {
       page = value;
     });
+  }
+
+  void onCurrency(bool usd) {
+    if (usd) {
+      double usdValue = double.tryParse(currencyController1.text) ?? 0.0;
+      double euroValue = usdValue * 0.95;
+      currencyController2.text = euroValue.toStringAsFixed(2);
+    } else {
+      double euroValue = double.tryParse(currencyController2.text) ?? 0.0;
+      double usdValue = euroValue / 0.95;
+      currencyController1.text = usdValue.toStringAsFixed(2);
+    }
+  }
+
+  @override
+  void dispose() {
+    currencyController1.dispose();
+    currencyController2.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,7 +89,11 @@ class MainPageState extends State<MainPage> {
           Column(
             children: [
               const SizedBox(height: 10),
-              const BalanceCard(),
+              BalanceCard(
+                onExchange: () {
+                  onPage('Currency rate');
+                },
+              ),
               const SizedBox(height: 16),
               const Row(
                 children: [
@@ -126,8 +154,121 @@ class MainPageState extends State<MainPage> {
             ),
           )
         else
-          const Text('Exchange'),
+          SizedBox(
+            height: 288,
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    _CurrencyCard(
+                      controller: currencyController1,
+                      currency: 'USD',
+                      onChanged: onCurrency,
+                    ),
+                    const SizedBox(height: 8),
+                    _CurrencyCard(
+                      controller: currencyController2,
+                      currency: 'EUR',
+                      onChanged: onCurrency,
+                    ),
+                  ],
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 144,
+                  child: Center(
+                    child: Container(
+                      height: 32,
+                      width: 32,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: const Center(
+                        child: SvgWidget('assets/arrow.svg'),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
       ],
+    );
+  }
+}
+
+class _CurrencyCard extends StatelessWidget {
+  const _CurrencyCard({
+    required this.controller,
+    required this.currency,
+    required this.onChanged,
+  });
+
+  final TextEditingController controller;
+  final String currency;
+  final void Function(bool usd) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 85,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: const Color(0xff343434),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Text(
+            currency,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: Fonts.w600,
+            ),
+          ),
+          const SizedBox(width: 5),
+          const Icon(
+            Icons.keyboard_arrow_down_rounded,
+            color: Colors.white,
+          ),
+          Expanded(
+            child: TextField(
+              controller: controller,
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.end,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: Fonts.w600,
+              ),
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(10),
+                FilteringTextInputFormatter.digitsOnly,
+              ],
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: currency == 'USD' ? '\$' : '€',
+                hintStyle: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 20,
+                  fontFamily: Fonts.w600,
+                ),
+              ),
+              onChanged: (value) {
+                onChanged(currency == 'USD' ? true : false);
+              },
+              onTapOutside: (event) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

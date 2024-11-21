@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../blocs/incom/incom_bloc.dart';
 import '../../../blocs/navbar/navbar_bloc.dart';
@@ -12,7 +11,9 @@ import '../../../core/widgets/others/svg_widget.dart';
 import '../../news/widgets/news_card.dart';
 
 class BalanceCard extends StatelessWidget {
-  const BalanceCard({super.key});
+  const BalanceCard({super.key, this.onExchange});
+
+  final void Function()? onExchange;
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +51,19 @@ class BalanceCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _Button(
+              const _Button(
                 id: 1,
                 title: 'Add',
               ),
               _Button(
                 id: 2,
                 title: 'Exchange',
+                onExchange: onExchange,
               ),
-              _Button(
+              const _Button(
                 id: 3,
                 title: 'More',
               ),
@@ -91,20 +93,24 @@ class _Button extends StatelessWidget {
   const _Button({
     required this.id,
     required this.title,
+    this.onExchange,
   });
 
   final int id;
   final String title;
+  final void Function()? onExchange;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         MyButton(
-          onPressed: () {
-            if (id == 1) context.read<NavbarBloc>().add(ChangeNavbar(index: 2));
-            if (id == 2) context.push('/exchange');
-          },
+          onPressed: onExchange ??
+              () {
+                if (id == 1) {
+                  context.read<NavbarBloc>().add(ChangeNavbar(index: 2));
+                }
+              },
           child: Container(
             height: 46,
             width: 46,
