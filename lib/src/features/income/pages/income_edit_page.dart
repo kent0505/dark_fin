@@ -1,16 +1,15 @@
-import 'package:dark_fin/src/core/widgets/dialogs/delete_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../blocs/button/button_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
-import '../../../core/config/fonts.dart';
 import '../../../core/models/incom.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/main_button.dart';
-import '../../../core/widgets/buttons/my_button.dart';
+import '../../../core/widgets/buttons/pop_button.dart';
 import '../../../core/widgets/buttons/tab_button.dart';
+import '../../../core/widgets/dialogs/my_dialog.dart';
 import '../../../core/widgets/textfields/txt_field.dart';
 import '../../../core/widgets/texts/page_title.dart';
 
@@ -84,20 +83,20 @@ class _IncomeEditPageState extends State<IncomeEditPage> {
           Row(
             children: [
               const SizedBox(width: 22),
-              _BackButton(
+              PopButton(
                 title: 'Back',
                 onPressed: () {
                   context.pop();
                 },
               ),
               const Spacer(),
-              _BackButton(
+              PopButton(
                 title: 'Delete',
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return DeleteDialog(
+                      return MyDialog(
                         title: 'Delete income?',
                         onYes: () {
                           context
@@ -174,32 +173,6 @@ class _IncomeEditPageState extends State<IncomeEditPage> {
             },
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _BackButton extends StatelessWidget {
-  const _BackButton({
-    required this.title,
-    required this.onPressed,
-  });
-
-  final String title;
-  final void Function() onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return MyButton(
-      onPressed: onPressed,
-      minSize: 20,
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 17,
-          fontFamily: Fonts.w300,
-        ),
       ),
     );
   }

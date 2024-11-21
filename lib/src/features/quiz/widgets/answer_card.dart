@@ -21,12 +21,12 @@ class AnswerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 44,
       margin: const EdgeInsets.only(
         bottom: 16,
         left: 16,
         right: 16,
       ),
-      padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
         color: const Color(0xff343434),
         borderRadius: BorderRadius.circular(14),
@@ -49,6 +49,8 @@ class AnswerCard extends StatelessWidget {
             Expanded(
               child: Text(
                 answer.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17,

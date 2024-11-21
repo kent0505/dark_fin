@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../config/fonts.dart';
 import '../buttons/my_button.dart';
 
-class DeleteDialog extends StatelessWidget {
-  const DeleteDialog({
+class MyDialog extends StatelessWidget {
+  const MyDialog({
     super.key,
     required this.title,
     this.onlyClose = false,

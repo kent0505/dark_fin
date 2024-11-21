@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/button/button_bloc.dart';
 import '../../../blocs/incom/incom_bloc.dart';
+import '../../../core/config/fonts.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/tab_button.dart';
 import '../../../core/widgets/others/no_data.dart';
@@ -64,9 +65,44 @@ class MainPageState extends State<MainPage> {
         ),
         const SizedBox(height: 20),
         if (page == 'Balance')
-          const Column(
+          Column(
             children: [
-              BalanceCard(),
+              const BalanceCard(),
+              const SizedBox(height: 16),
+              const Row(
+                children: [
+                  SizedBox(width: 22),
+                  Text(
+                    'Actions',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 13,
+                      fontFamily: Fonts.w700,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              BlocBuilder<IncomBloc, IncomState>(
+                builder: (context, state) {
+                  if (state is IncomLoadedState) {
+                    return Column(
+                      children: [
+                        ...List.generate(
+                          state.incoms.length,
+                          (index) {
+                            if (index < 2) {
+                              return IncomeCard(incom: state.incoms[index]);
+                            }
+                            return Container();
+                          },
+                        ),
+                      ],
+                    );
+                  }
+                  return Container();
+                },
+              )
             ],
           )
         else if (page == 'History')

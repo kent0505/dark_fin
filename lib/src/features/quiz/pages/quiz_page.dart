@@ -7,7 +7,7 @@ import '../../../core/config/fonts.dart';
 import '../../../core/models/question.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/main_button.dart';
-import '../../../core/widgets/dialogs/delete_dialog.dart';
+import '../../../core/widgets/dialogs/my_dialog.dart';
 import '../widgets/answer_card.dart';
 import '../widgets/question_card.dart';
 
@@ -43,7 +43,7 @@ class _QuizPageState extends State<QuizPage> {
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return DeleteDialog(
+          return MyDialog(
             title: 'Correct answers: $correctAnswers',
             onlyClose: true,
             onYes: () {
@@ -90,7 +90,11 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         const SizedBox(height: 30),
-        QuestionCard(question: questionsList[index].title),
+        BlocBuilder<ButtonBloc, ButtonState>(
+          builder: (context, state) {
+            return QuestionCard(question: questionsList[index].title);
+          },
+        ),
         const SizedBox(height: 30),
         BlocBuilder<ButtonBloc, ButtonState>(
           builder: (context, state) {

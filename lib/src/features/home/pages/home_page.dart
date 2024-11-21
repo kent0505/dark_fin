@@ -18,19 +18,22 @@ class HomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          BlocConsumer<NavbarBloc, NavbarState>(
-            listener: (context, state) {
-              logger(state.runtimeType);
-            },
-            builder: (context, state) {
-              if (state is NavbarIncome) return const IncomePage();
+          Padding(
+            padding: EdgeInsets.only(bottom: 62 + getBottom(context)),
+            child: BlocConsumer<NavbarBloc, NavbarState>(
+              listener: (context, state) {
+                logger(state.runtimeType);
+              },
+              builder: (context, state) {
+                if (state is NavbarIncome) return const IncomePage();
 
-              if (state is NavbarNews) return const NewsPage();
+                if (state is NavbarNews) return const NewsPage();
 
-              if (state is NavbarQuiz) return const QuizPage();
+                if (state is NavbarQuiz) return const QuizPage();
 
-              return const MainPage();
-            },
+                return const MainPage();
+              },
+            ),
           ),
           const NavBar(),
         ],

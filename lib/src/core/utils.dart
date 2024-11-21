@@ -1,7 +1,10 @@
 import 'dart:developer' as developer;
 
+import 'package:dark_fin/src/core/db/db.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import 'models/incom.dart';
 
 int getTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
@@ -64,4 +67,12 @@ void precacheImages(BuildContext context) {
   } catch (e) {
     logger(e);
   }
+}
+
+int getBalance() {
+  int total = 0;
+  for (Incom incom in incomsList) {
+    total += incom.amount;
+  }
+  return total;
 }
