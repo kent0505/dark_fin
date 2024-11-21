@@ -61,7 +61,7 @@ class _NewsPageState extends State<NewsPage> {
             },
           ),
         ),
-        const SizedBox(height: 13),
+        const SizedBox(height: 10),
         Expanded(
           child: BlocBuilder<ButtonBloc, ButtonState>(
             builder: (context, state) {

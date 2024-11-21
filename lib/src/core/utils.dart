@@ -56,19 +56,6 @@ double getHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
 void logger(Object message) => developer.log(message.toString());
 
-void precacheImages(BuildContext context) {
-  List<String> imageAssets = [
-    // 'assets/.png',
-  ];
-  try {
-    for (String assets in imageAssets) {
-      precacheImage(AssetImage(assets), context);
-    }
-  } catch (e) {
-    logger(e);
-  }
-}
-
 int getBalance() {
   int total = 0;
   for (Incom incom in incomsList) {

@@ -22,8 +22,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // precacheImages(context);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ButtonBloc()),
@@ -32,7 +30,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: theme,
+        // theme: theme,
+        darkTheme: theme,
         routerConfig: routerConfig,
       ),
     );

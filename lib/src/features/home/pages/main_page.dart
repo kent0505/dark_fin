@@ -63,10 +63,11 @@ class MainPageState extends State<MainPage> {
             },
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         if (page == 'Balance')
           Column(
             children: [
+              const SizedBox(height: 10),
               const BalanceCard(),
               const SizedBox(height: 16),
               const Row(
@@ -115,7 +116,7 @@ class MainPageState extends State<MainPage> {
                   }
 
                   return ListView.builder(
-                    padding: EdgeInsets.zero,
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     itemCount: state.incoms.length,
                     itemBuilder: (context, index) {
                       return IncomeCard(incom: state.incoms[index]);

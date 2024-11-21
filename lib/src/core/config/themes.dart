@@ -3,11 +3,19 @@ import 'package:flutter/material.dart';
 
 import 'fonts.dart';
 
-final theme = ThemeData(
+final theme = ThemeData.dark(
   useMaterial3: false,
-  fontFamily: Fonts.w400,
+).copyWith(
+  // fontFamily: Fonts.w400,
   scaffoldBackgroundColor: Colors.black,
-  brightness: Brightness.dark,
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: Colors.grey,
+    selectionColor: Colors.grey,
+    selectionHandleColor: Colors.grey,
+  ),
+  colorScheme: ColorScheme.fromSwatch(
+    accentColor: Colors.grey,
+  ),
   dialogTheme: const DialogTheme(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
